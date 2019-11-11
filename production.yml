@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  static:
+  database:
+
+services:
+  ligangblog:
+    build:
+      context: .
+      dockerfile: compose/production/django/Dockerfile
+    image: ligangblog
+    container_name: ligangblog
+    working_dir: /app
+    volumes:
+      - database:/app/database
+      - static:/app/static
+    env_file:
+      - .envs/.production
+    ports:
+      - "8000:8000"
+    command: /start.sh
+
+  nginx:
+    build:
+      context: .
+      dockerfile: compose/production/nginx/Dockerfile
+    image: ligangblog_nginx
+    container_name: ligangblog_nginx
+    volumes:
+      - static:/apps/ligangblog/static
+    ports:
+      - "80:80"
+      - "443:443"
+version: '3'
+
+volumes:
+  static:
+  database:
