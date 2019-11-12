@@ -1,0 +1,2 @@
+#!/bin/bash
+vim /root/apps/ligangblog/compose/production/django/Dockerfile
