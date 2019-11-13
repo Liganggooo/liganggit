@@ -10,8 +10,8 @@ WORKDIR /app
 RUN python -m pip install --upgrade pip -i https://pypi.doubanio.com/simple/
 RUN apk add --update --no-cache jpeg-dev zlib-dev g++ gcc
 RUN pip install pillow -i https://pypi.doubanio.com/simple/
-COPY ./requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt -i https://pypi.doubanio.com/simple/
+COPY ./requirments.txt /app/requirments.txt
+RUN pip install -r requirments.txt -i https://pypi.doubanio.com/simple/
 COPY . /app
 
 COPY ./compose/production/django/start.sh /start.sh
