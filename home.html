@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    GCloud
+{% endblock title %}
+{% block content %}
+<!DOCTYPE html>
+<link rel="shortcut icon" href="{% static 'img/gcloud.png' %}">
+
+<style type="text/css">
+  {% include 'article/style.css'%}
+</style>
+
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+    display: inline;
+    border: none;
+    box-shadow: none;
+    height: 1em;
+    width: 1em;
+    margin: 0 .07em;
+    vertical-align: -0.1em;
+    background: none;
+    padding: 0;
+}
+</style>
+<!-- <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css"> -->
+<!-- <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script> -->
+
+
+<style type="text/css">
+    .recentcomments a{display:inline;
+        padding:0;
+        margin:0;}
+</style>
+<style type="text/css">
+    .broken_link, a.broken_link {
+    text-decoration: line-through;}
+</style>
+
+<!-- <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/397828d3cf4dbe2593b9da8e3/895099190896f180b5a750f67.js");
+</script> -->
+
+</head>  
+
+<body class="mdui-theme-primary-purple mdui-theme-accent-pink mdx-reduce-motion">
+<script>      
+    var haveChromeColor=document.getElementsByName('theme-color').length>0;
+  if(!sessionStorage.getItem('ns_night-styles')){var handleColorChange=function handleColorChange(mql){if(sessionStorage.getItem('ns_night-styles')){return;}if(mql.matches){document.getElementsByTagName('body')[0].classList.add("mdui-theme-layout-dark");if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content","#212121");}}else{document.getElementsByTagName('body')[0].classList.remove("mdui-theme-layout-dark");if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content",document.getElementsByName('mdx-main-color')[0].getAttribute("content"));}}};var mql=window.matchMedia("(prefers-color-scheme: dark)");mql.addListener(handleColorChange);handleColorChange(mql);}else{if(sessionStorage.getItem('ns_night-styles')==="true"){document.getElementsByTagName('body')[0].className+=" mdui-theme-layout-dark";if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content","#212121");}}}
+</script>
+
+    <div class="fullScreen sea-close"></div>
+    {% include 'article/side.html'%}
+
+
+
+    </div>
+    <header role="banner">
+        <div class="titleBarGobal mdx-sh-ani mdui-appbar-fixed mdui-appbar mdui-shadow-0  mdui-text-color-white-text" id="titleBar">
+      <div class="mdui-toolbar mdui-toolbar-self topBarAni">
+        <button class="mdui-btn mdui-btn-icon" id="menu" mdui-drawer="{target:'#left-drawer',overlay:true,swipe:true}"><i class="mdui-icon material-icons">menu</i></button>
+        <span class="mdui-typo-headline">Gcloud</span>
+        <div class="mdui-toolbar-spacer"></div>
+      
+      </div>
+    </div></header>
+    <div class="titleBarGobal mdui-appbar mdui-shadow-0 mdui-text-color-white-text" id="SearchBar">
+<form class="mdui-toolbar mdui-appbar-fixed" role="search" method="get" id="searchform" action="https://www.debuginn.cn/">
+
+<div class="mdui-toolbar-spacer"></div>
+<a class="mdui-btn mdui-btn-icon sea-close"><i class="mdui-icon material-icons">&#xe5cd;</i></a>
+</form>
+</div>    <div class="theFirstPageBackGround mdui-color-theme"></div>
+    <div class="theFirstPage lazyload" data-bg="{% static 'img/mountain.jpg'%}"></div>    <div class="theFirstPageSay mdui-valign mdui-typo mdui-text-color-white-text"><h2 class="mdui-center" id="theFirstPageSayContent">世事最难称心如意。</h2><div class="mdx-tworows-title"><div><span class="mdui-text-color-theme">Gcloud</span><hr>世事最难称心如意。</div></div></div>
+
+
+ <!-- 要写的部分一    -->
+    <div class="main">
+            <div class="mdx-hot-posts mdui-center"><h3>热门推荐</h3>
+                <div class="mdx-hp-h3-fill"></div><div id="mdx-sp-out-c"><div class="mdx-hp-g-l"></div><div class="mdx-hp-g-r"></div><div class="mdx-posts-may-related mdx-ul">
+                    {% for article in articles %}
+                    <a href="{% url 'article:article_detail' article.id %}" rel="bookmark" title="{{ article.title }}">
+                        <div class="mdx-li mdui-card mdui-color-theme mdui-hoverable">
+                            {% if article.avatar %}
+                            <div class="lazyload mdx-hot-posts-lazyload" data-bg="{{ article.avatar.url }}"></div>
+                            {% endif %}
+                            <span class="mdx-same-posts-img">{{ article.title }}</span>
+                            <i class="mdui-icon material-icons" title="前往阅读">&#xe5c8;</i>
+                            <div class="mdx-sp-fill"></div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+
+
+<!-- 第二部分 -->
+<h3 class="mdx-all-posts">最新文章</h3>
+<main class="postList mdui-center" id="postlist">
+    {% include 'article/profile.html' %}
+
+
+
+</main>
+
+
+<button class="mdui-fab mdui-color-theme-accent mdui-fab-fixed mdui-fab-hide scrollToTop mdui-ripple"><i class="mdui-icon material-icons">&#xe316;</i></button>
+
+<!-- i'm a fuck footer -->
+{% include 'footer.html' %}
+</div>
+<script type='text/javascript' src='{% static "js/js.js" %}'></script>             
+
+
+{% include "article/inner.html"%}
+
+
+<!-- <script>
+    var tipMutiOff = '搜索功能暂时不可用。';
+    var tipMutiOffRes = '评论功能暂时不可用。<br><br>';
+    var tipMuti = '仅显示匹配的前10条记录，要查看更多请按下回车前往搜索结果页面';
+    var snackMuti = "无法连接到实时搜索服务";
+    var moreMuti = '去围观';
+</script>
+    
+<script>
+  var ajax_error = "<strong>加载失败：</strong> 未知错误。";
+  var reduce_motion_i18n_1 = "检测到减弱动画模式，已为你减弱动画效果";
+  var reduce_motion_i18n_2 = "撤销";
+  var reduce_motion_i18n_3 = "减弱动画模式关闭，已启用完整动画效果";
+  var ifscr = 0;
+          ifscr = 1;
+        var mdx_comment_ajax = 0;
+          mdx_comment_ajax = 1;
+        var mdx_imgBox = 0;
+          mdx_imgBox = 1;
+        var mdx_tapToTop = 0;
+          mdx_tapToTop = 1;
+</script> -->
+<!-- <script>
+    enhanced_ajax = false;
+    enhanced_ajax = true;
+</script> -->
+
+<script type='text/javascript' src='{% static "js/js.js" %}'></script>
+<!-- <meta name="360-site-verification" content="402096d7dd3c88ef8a377fcfcc8482ac" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146138817-1"></script> -->
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-146138817-1');
+</script> -->
+<!-- <script data-ad-client="ca-pub-2909651999968153" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+
+  </body>
+</html>
+{% endblock content %}

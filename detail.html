@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    {{ article.title }}
+{% endblock title %}
+{% block content %}
+
+<!--     <link rel="manifest" href="/manifest.json">
+    <link rel="preload" href="{% static 'js/post.js' %}" as="script">
+    <link rel="preload" href="{% static 'icons/material-icons/material_2_icon_font.woff2' %}" as="font" type="font/woff2" crossorigin> -->
+
+<style type="text/css">
+  {% include 'article/style_detail.css'%}
+</style>
+
+    <script type='text/javascript' src='{% static "js/js.js" %}'></script> 
+
+<style type="text/css" id="wp-custom-css">
+.mootwoEnlighterJS span, ol.EnlighterJS li, ul.EnlighterJS li {
+font-size: 16px;
+white-space: pre;
+word-break: keep-all;
+word-wrap: normal;
+}
+ol.mootwoEnlighterJS.EnlighterJS {
+padding: 5px 0 5px 10px;
+}
+body.mdui-theme-layout-dark div.EnlighterJSWrapper.mootwoEnlighterJSWrapper {
+filter: invert(1);
+opacity:.85;
+}
+.EnlighterJS, .EnlighterJSWrapper {
+white-space: pre;
+-webkit-overflow-scrolling: touch;
+}
+ol.mootwoEnlighterJS li, ul.mootwoEnlighterJS li {
+padding: 1px 5px 1px 5px;
+}
+.EnlighterJS,.EnlighterJSWrapper {
+font-family: Consolas,"Source Code Pro","Liberation Mono","Courier New",Courier,monospace;
+}
+.MathJax_Display:focus, .MathJax:focus, .mjx-chtml:focus, .MathJax_PHTML_Display:focus, .MJXp-math:focus, .MathJax_SVG_Display:focus , .MathJax_SVG_Display svg:focus, .MathJax_PlainSource:focus{
+outline: none;
+}
+.MathJax_Display, .mjx-chtml, .MathJax_PHTML_Display, .MJXp-math, .MathJax_SVG_Display, MathJax_PlainSource_Display {
+overflow-y: hidden;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.wp-block-file {
+margin-bottom: 20px;
+}
+</style>
+
+
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink body-grey1 mdx-reduce-motion"> 
+    <script>var haveChromeColor=document.getElementsByName('theme-color').length>0;if(!sessionStorage.getItem('ns_night-styles')){var handleColorChange=function handleColorChange(mql){if(sessionStorage.getItem('ns_night-styles')){return;}if(mql.matches){document.getElementsByTagName('body')[0].classList.add("mdui-theme-layout-dark");if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content","#212121");}}else{document.getElementsByTagName('body')[0].classList.remove("mdui-theme-layout-dark");if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content",document.getElementsByName('mdx-main-color')[0].getAttribute("content"));}}};var mql=window.matchMedia("(prefers-color-scheme: dark)");mql.addListener(handleColorChange);handleColorChange(mql);}else{if(sessionStorage.getItem('ns_night-styles')==="true"){document.getElementsByTagName('body')[0].className+=" mdui-theme-layout-dark";if(haveChromeColor){document.getElementsByName('theme-color')[0].setAttribute("content","#212121");}}}</script> 
+<div class="fullScreen sea-close">
+
+</div>
+<div class="mdui-progress mdui-color-white"><div class="mdui-progress-indeterminate">
+
+</div>
+</div>
+
+<!-- sidebar -->
+
+{% include 'article/side.html'%}
+</div>
+
+<header role="banner">
+<div class="titleBarGobal mdui-appbar mdui-shadow-0  mdui-text-color-white-text" id="titleBarinPost">
+<div class="mdui-toolbar mdui-appbar-fixed"> 
+    <button class="mdui-btn mdui-btn-icon" id="menu" mdui-drawer="{target:'#left-drawer',overlay:true,swipe:true}"><i class="mdui-icon material-icons">menu</i></button> 
+    <a href="{% url 'article:home1' %}" class="mdui-typo-headline">GCLOUD</a>
+<div class="mdui-toolbar-spacer">
+
+</div>
+<div class="mdui-menu" id="qrcode">
+
+
+</div>
+</header>
+
+<div class="titleBarGobal mdui-appbar mdui-shadow-0 mdui-text-color-white-text" id="SearchBar">
+    <form class="mdui-toolbar mdui-appbar-fixed" role="search" method="get" id="searchform" action="{% url 'article:home1' %}">
+
+<div class="mdui-toolbar-spacer">
+
+</div> 
+<a class="mdui-btn mdui-btn-icon sea-close">
+    <i class="mdui-icon mat
+    erial-icons">&#xe5cd;
+</i>
+</a>
+</form>
+</div>
+<div class="mdui-text-color-white-text mdui-typo-display-2 mdui-valign PostTitle PostTitle2" itemprop="name headline" itemtype="http://schema.org/BlogPosting">
+    <span class="mdui-center">{{ article.title }}</span>
+</div>
+<div class="PostTitleFill2 lazyload" data-bg="{% static 'img/mountain.jpg'%}">
+
+</div>
+<div class="PostTitleFillBack2 mdui-color-theme">
+
+</div>
+<div class="PostMain PostMain2">
+<div class="ArtMain0 mdui-center mdui-shadow-12">
+    <article class="post-788 post type-post status-publish format-standard has-post-thumbnail hentry category-develop category-recommended tag-material-design tag-mdx tag-67  mdui-typo" id="post-788" itemprop="articleBody">
+        <div class="col-12">
+            <p>{{ article.body|safe }}</p>
+            <br>
+        </div>
+    </article>
+</div>
+<div class="mdx-post-money">
+    <button mdui-menu="{target: '#mdx-qrcode-money',align: 'center'}" mdui-tooltip="{content: '技术活，当赏'}" class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple" 
+    onclick="validate_is_like('{% url 'article:increase_likes' article.id %}', {{ article.id }}
+        ,{{ article.likes }})">
+        <i class="mdui-icon material-icons">&#xe8dc;</i>
+    </button>
+
+
+<div class="mdx-same-posts">
+    <h3>你可能会喜欢</h3>
+<div id="mdx-sp-out-c">
+    <ul class="mdx-posts-may-related">
+    {% for hot in hots %}
+    <a href="{% url 'article:article_detail' hot.id %}" rel="bookmark" title="{{ hot.title }}">
+        <li class="mdui-card mdui-color-theme">
+            {% if hot.avatar %}
+            <div class="mdx-lazyload lazyload" data-bg="{{ hot.avatar.url }}">
+            </div>
+            {% endif %}
+            <span class="mdx-same-posts-img">{{ hot.title }}</span>
+            <i class="mdui-icon material-icons" title="前往阅读">&#xe5c8;</i>
+        <div class="mdx-sp-fill">
+        <div>
+        </li>
+    </a>
+    {% endfor %}
+    
+</ul>
+</div>
+</div>
+
+
+<div id="respond" class="comment-respond">
+    <h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/develop/788.html#respond" style="display:none;">取消回复</a>
+    </small></h3>
+
+<div class="mdx-comment-main-input mdui-textfield mdui-textfield-floating-label mdx-emj-inp"><i class="mdui-icon material-icons">textsms</i>
+    <label class="mdui-textfield-label">说点什么...</label>
+    <textarea class="mdui-textfield-input" name="comment" id="comment"></textarea>
+</div>
+
+
+</div></div>
+<button class="mdui-fab mdui-color-theme-accent mdui-fab-fixed mdui-fab-hide scrollToTop mdui-ripple"><i class="mdui-icon material-icons">&#xe316;</i></button>
+
+<div class="page-footer-nav mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"> 
+        {% if next_article %}
+        <a href="{{ next_article.get_absolute_url }}" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 page-footer-nav-left">
+            <div class="page-footer-nav-text">
+                <i class="mdui-icon material-icons"><<</i> <span class="page-footer-nav-direction mdui-hidden-xs-down">上一篇</span><div class="page-footer-nav-chapter mdui-hidden-xs-down">{{ next_article.title }}
+                </div>
+            </div> 
+        </a> 
+        {% endif %}
+        {% if pre_article %}
+        <a href="{{ pre_article.get_absolute_url }}" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 page-footer-nav-right">
+            <div class="page-footer-nav-text"> 
+                <i class="mdui-icon material-icons">>></i> 
+                <span class="page-footer-nav-direction">下一篇</span><div class="page-footer-nav-chapter">{{ pre_article.title }}
+            </div>
+            </div> 
+        </a>
+        {% endif %}
+</div>
+</div>
+</div>
+<div id="indic"></div>
+{% include 'footer.html' %}
+</div>  
+
+
+<noscript><p></p></noscript> 
+
+
+{% include "article/inner.html"%}
+
+
+{% endblock content %}
